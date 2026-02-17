@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Summarization Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📄 Text Summarization Tool</h1>
+    <p class="subtitle">
+        Supports English, Hindi & Telugu <br>
+        (Text / PDF Files)
+    </p>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-box">
+
+    <label><b>✍️ Enter Text (Optional)</b></label>
+    <textarea name="input_text" placeholder="Type or paste text here..."></textarea>
+
+    <p class="or-text">OR</p>
+
+    <label><b>📁 Upload File (TXT / PDF)</b></label>
+    <input type="file" name="file">
+
+    <button type="submit">Summarize</button>
+</form>
+
+
+    {% if extracted_text %}
+    <div class="output-box">
+        <h2>📝 Extracted Text</h2>
+        <div class="text-box">
+            {{ extracted_text }}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if summary %}
+    <div class="output-box">
+        <h2>✨ Summary</h2>
+        <div class="summary-box">
+            {{ summary }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<footer>
+    <p>Built with ❤️ using Flask & NLP</p>
+</footer>
+
+</body>
+</html>
+
